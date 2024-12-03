@@ -17,11 +17,11 @@ const starStyle = {
   cursor: "pointer",
 }
 
-const Star = ({ onRate, index, filled, onMouseIn, onMouseOut }) => (
+const Star = ({ onRate, filled, onMouseIn, onMouseOut }) => (
   <li
     style={starStyle}
-    onClick={() => onRate(index)}
-    onMouseEnter={() => onMouseIn(index)}
+    onClick={onRate}
+    onMouseEnter={onMouseIn}
     onMouseLeave={onMouseOut}
   >
     {filled ? (
@@ -65,11 +65,10 @@ const StarRating = ({ maxRating = 5 }) => {
       <ul style={starContainerStyle}>
         {Array.from({ length: maxRating }, (_, index) => (
           <Star
-            onRate={handleRating}
-            index={index}
+            onRate={() => handleRating(index)}
             key={index}
             filled={isRatingGreaterThanIndex(index)}
-            onMouseIn={handleMouseIn}
+            onMouseIn={() => handleMouseIn(index)}
             onMouseOut={handleMouseOut}
           />
         ))}
