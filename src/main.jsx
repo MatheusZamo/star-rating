@@ -7,6 +7,6 @@ const root = createRoot(rootElement)
 
 root.render(
   <StrictMode>
-    <StarRating color="teal" />
+    <StarRating color="teal" size={60} />
   </StrictMode>,
 )
