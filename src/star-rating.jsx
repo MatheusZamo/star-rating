@@ -4,7 +4,6 @@ const containerStyle = { display: "flex", gap: "1rem", alignItems: "center" }
 const textStyle = { margin: 0 }
 const starContainerStyle = {
   display: "flex",
-  gap: "0.25rem",
   margin: 0,
   padding: 0,
   listStyle: "none",
