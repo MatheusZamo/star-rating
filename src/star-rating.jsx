@@ -51,7 +51,12 @@ const Star = ({ onRate, filled, onMouseIn, onMouseOut, color, size }) => {
   )
 }
 
-const StarRating = ({ maxRating = 5, color = "gray", size = 48 }) => {
+const StarRating = ({
+  maxRating = 5,
+  color = "gray",
+  size = 48,
+  className = "",
+}) => {
   const [rating, setRating] = useState(0)
   const [tempRating, setTempRating] = useState(0)
 
@@ -63,7 +68,7 @@ const StarRating = ({ maxRating = 5, color = "gray", size = 48 }) => {
   const textStyle = { margin: 0, color, fontSize: `${size / 1.5}px` }
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className={className}>
       <ul style={starContainerStyle}>
         {Array.from({ length: maxRating }, (_, index) => (
           <Star
