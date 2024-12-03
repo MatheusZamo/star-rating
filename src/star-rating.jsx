@@ -58,7 +58,7 @@ const StarRating = ({ maxRating = 5 }) => {
   const handleMouseOut = () => setTempRating(0)
   const handleMouseIn = (index) => setTempRating(index + 1)
   const handleRating = (index) => setRating(index + 1)
-  const isGreaterThanIndex = (index) => rating > index
+  const isRatingGreaterThanIndex = (index) => (tempRating || rating) > index
 
   return (
     <div style={containerStyle}>
@@ -68,7 +68,7 @@ const StarRating = ({ maxRating = 5 }) => {
             onRate={handleRating}
             index={index}
             key={index}
-            filled={isGreaterThanIndex(index)}
+            filled={isRatingGreaterThanIndex(index)}
             onMouseIn={handleMouseIn}
             onMouseOut={handleMouseOut}
           />
