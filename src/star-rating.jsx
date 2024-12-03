@@ -17,8 +17,13 @@ const starStyle = {
   cursor: "pointer",
 }
 
-const Star = ({ onRate, index, filled }) => (
-  <li style={starStyle} onClick={() => onRate(index)}>
+const Star = ({ onRate, index, filled, onMouseIn, onMouseOut }) => (
+  <li
+    style={starStyle}
+    onClick={() => onRate(index)}
+    onMouseEnter={() => onMouseIn(index)}
+    onMouseLeave={onMouseOut}
+  >
     {filled ? (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +53,10 @@ const Star = ({ onRate, index, filled }) => (
 
 const StarRating = ({ maxRating = 5 }) => {
   const [rating, setRating] = useState(0)
+  const [tempRating, setTempRating] = useState(0)
 
+  const handleMouseOut = () => setTempRating(0)
+  const handleMouseIn = (index) => setTempRating(index + 1)
   const handleRating = (index) => setRating(index + 1)
   const isGreaterThanIndex = (index) => rating > index
 
@@ -61,10 +69,12 @@ const StarRating = ({ maxRating = 5 }) => {
             index={index}
             key={index}
             filled={isGreaterThanIndex(index)}
+            onMouseIn={handleMouseIn}
+            onMouseOut={handleMouseOut}
           />
         ))}
       </ul>
-      <p style={textStyle}>{rating || ""}</p>
+      <p style={textStyle}>{tempRating || rating || ""}</p>
     </div>
   )
 }
