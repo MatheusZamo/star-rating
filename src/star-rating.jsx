@@ -56,13 +56,18 @@ const StarRating = ({
   color = "gray",
   size = 48,
   className = "",
+  onRating,
 }) => {
   const [rating, setRating] = useState(0)
   const [tempRating, setTempRating] = useState(0)
 
   const handleMouseOut = () => setTempRating(0)
   const handleMouseIn = (index) => setTempRating(index + 1)
-  const handleRating = (index) => setRating(index + 1)
+  const handleRating = (index) => {
+    const newRating = index + 1
+    setRating(newRating)
+    onRating?.(newRating)
+  }
   const isRatingGreaterThanIndex = (index) => (tempRating || rating) > index
 
   const textStyle = { margin: 0, color, fontSize: `${size / 1.5}px` }
@@ -87,4 +92,14 @@ const StarRating = ({
   )
 }
 
-export { StarRating }
+const App = () => {
+  const [rating, setRating] = useState(null)
+  return (
+    <>
+      <StarRating color="teal" size={60} onRating={setRating} />
+      {rating && <p>Este filme foi avaliado com {rating} estrelas</p>}
+    </>
+  )
+}
+
+export { App }
