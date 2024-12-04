@@ -92,14 +92,4 @@ const StarRating = ({
   )
 }
 
-const App = () => {
-  const [rating, setRating] = useState(null)
-  return (
-    <>
-      <StarRating color="teal" size={60} onRating={setRating} />
-      {rating && <p>Este filme foi avaliado com {rating} estrelas</p>}
-    </>
-  )
-}
-
-export { App }
+export { StarRating }
