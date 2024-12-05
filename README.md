@@ -10,4 +10,4 @@ Component that contains a way to give ratings by filling in stars, filling in th
 *  className: inserts a css class <br/>
 *  size: defines the size of the stars <br/>
 *  color: defines the color of the stars <br/>
-*  onRate: function that exports the value of the selected stars <br/>
+*  onRate: function that exports the amount of filled stars <br/>
